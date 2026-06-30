@@ -48,6 +48,7 @@
       const double &operator[](std::size_t i) const;
       Tensor operator+(const Tensor &other) const; 
       Tensor operator*(const Tensor &other) const;
+      Tensor transpose(std::size_t dim1, std::size_t dim2) const;
   };
 
 #endif //TENSOR_H

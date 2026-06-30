@@ -78,3 +78,16 @@ Tensor Tensor::operator+(const Tensor &other) const {
 Tensor Tensor::operator*(const Tensor &other) const {
   return ops::multiply(*this, other);
 }
+
+Tensor Tensor::transpose(std::size_t dim1,  std::size_t dim2) const{
+  if(dim1 >= shape.size() || dim2 >=shape.size() ) {
+    throw std::out_of_range("Invalud dimension given\n");
+  }
+  if(dim1 == dim2) return *this;
+
+  Tensor out = *this;
+  std::swap(out.shape[dim1], out.shape[dim2]);
+  std::swap(out.stride[dim1], out.stride[dim2]);
+
+  return out;
+}
